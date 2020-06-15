@@ -1,6 +1,7 @@
 class Oystercard
 attr_reader :balance
 LIMIT = 90
+MINIMUM = 1
 
 def initialize 
   @balance = 0
@@ -17,6 +18,7 @@ def deduct(amount)
 end
 
 def touch_in
+  fail "DENIED!!!! balance under £#{MINIMUM}" if @balance < MINIMUM
   @in_journey = true
 end
 
