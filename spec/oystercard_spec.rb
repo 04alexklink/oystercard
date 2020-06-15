@@ -44,4 +44,30 @@ describe Oystercard do
       expect(oystercard.balance).to eq(1)
     end
   end
+  describe '#touch_in' do
+    it 'should touch in a card when we get to barriers' do
+      oystercard = Oystercard.new
+      expect(oystercard.touch_in).to eq(true)
+      #expect(oystercard.in_journey?).to eq(true)
+    end
+  end
+  describe '#touch_out' do
+    it 'should touch out a card when out of barriers' do
+      oystercard = Oystercard.new
+      expect(oystercard.touch_out).to eq(false)
+    end
+  end
+  describe '#in_journey' do
+    it 'after touching in should be in journey' do
+      oystercard = Oystercard.new
+      oystercard.touch_in
+      expect(oystercard.in_journey?).to eq(true)
+    end
+    it 'after touching in and touching out should not be in journey' do
+      oystercard = Oystercard.new
+      oystercard.touch_in
+      oystercard.touch_out
+      expect(oystercard.in_journey?).to eq(false)
+    end
+  end
 end
