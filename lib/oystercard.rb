@@ -11,4 +11,8 @@ def top_up(amount)
   @balance += amount
 end
 
+def deduct(amount)
+  @balance -= amount
+end
+
 end

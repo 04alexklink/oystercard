@@ -30,4 +30,18 @@ describe Oystercard do
       expect { oystercard.top_up(50) }.to raise_error("Cannot top up over £90")
     end
   end
+  describe '#deduct' do
+    it 'should deduct money from an oystercard balance' do
+      oystercard = Oystercard.new
+      oystercard.top_up(2)
+      oystercard.deduct(1)
+      expect(oystercard.balance).to eq(1)
+    end
+    it 'should deduct money from an oystercard balance' do
+      oystercard = Oystercard.new
+      oystercard.top_up(3)
+      oystercard.deduct(2)
+      expect(oystercard.balance).to eq(1)
+    end
+  end
 end
